@@ -1,0 +1,55 @@
+{% extends "admin_dash.html" %}
+
+{% block title %} Donor {% endblock %}
+
+{% block style %}
+<!-- Tabs -->
+        <style type="text/css">
+            /* Style tab links */
+            .tablink {
+              background-color: darksalmon;
+              color: white;
+              float: left;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              padding: 14px 16px;
+              font-size: 17px;
+              width: 16%;
+            }
+
+            .tablink:hover {
+              background-color: darkred;
+            }
+          </style>
+{% endblock %}
+
+ {% block content %}
+          {%block heading%}{%endblock%}
+        <fieldset id="sub-header">
+                       
+              <button class="tablink"  onclick="window.location.href='{{ url_for('dashboard') }}';" > Dashboard </button>
+
+              <button class="tablink" onclick="window.location.href='{{ url_for('add_donor') }}';">   Add Donor </button>
+
+              <button class="tablink" onclick="window.location.href='{{ url_for('search_donor') }}';"> Search Donor  </button>
+
+              <button class="tablink" onclick="window.location.href='{{ url_for('view_all_donor') }}';"> View All Donor  </button>
+
+              <button class="tablink" onclick="window.location.href='{{ url_for('update_donor') }}';"> Update Donor </button>
+
+              <button class="tablink" onclick="window.location.href='{{ url_for('delete_donor') }}';"> Delete Donor </button>
+
+        </fieldset>
+        <br>
+        {% block form%}
+        <fieldset style=" margin: 15%;padding: 60px;margin-top:-25px;"/>
+        <center>
+          <h2>Welcome To</h2>
+          <img src="{{url_for('static',filename='images/donor_tab.jpg')}}" ><h2>Donor Management Tab</h2>          
+        </center>
+      </fieldset>
+      {%endblock%}
+          
+{% endblock %}
+        

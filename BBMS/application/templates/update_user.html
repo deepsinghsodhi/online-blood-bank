@@ -1,0 +1,75 @@
+{% extends "user_tab.html" %}
+
+{% block title %}Update User{% endblock %}
+
+
+{% block navbar %}
+{% endblock %}
+
+
+{%block heading%}
+<h3 style="text-align:center;">User Management</h3>   
+{%endblock%}
+
+ {% block form %}
+        
+       {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            {% for category , message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    <p><center>{{ message }}</center></p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+            {% endfor %}
+        
+          {% endif %}
+        {% endwith %}
+        <div id="form-section">
+            <div id="form-field">
+
+                <p style="margin-top: 25px;">Update User</p>
+               <form action="/update_user/" method="POST" >
+                    <table>
+                        
+                        <tr>
+                            <td id="label">Email</td>
+                            <td>
+                                {% if data %}
+                                {%for d in data%}
+                                <input type="email" name="email" class="form-control" id="email" value="{{d.email}}" readonly>
+                                {% endfor %}
+                                {% else %}
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter Registered Email" required>
+                                <td id="Getbtn"><input type="submit" name="Sbtn" onclick="enable(this)" value="Get" id="btnGet"></td>
+                                {% endif %}
+                            </td> 
+                            
+                        </tr>
+                        
+                        {% for d in data%}
+                        <tr>
+                            <td id="label"> UserName</td>
+                            <td><input type="text" class="form-control" name="username" value="{{d.username}}" id="username"   required></td>
+                        </tr>
+                        
+                        <tr>
+                            <td id="label"> Password</td>
+                            <td><input type="password" name="password"  class="form-control" id="password"  style="border:1px solid #ced4da;color: black;" required></td>
+                        </tr>
+                        
+                        
+                        <tr></tr>
+                        <tr>
+                          
+                            <td id="btn"><input type="submit" name="Sbtn"  value="Update" id="btnsbmt" style="margin-left: 80%"></td>
+                        </tr>
+                        {% endfor%}
+                    </table>
+
+                </form>
+            </div>
+        </div>
+{% endblock %}
+        

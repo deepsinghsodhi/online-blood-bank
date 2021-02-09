@@ -1,0 +1,26 @@
+{% extends "error_tab.html" %}
+
+{% block title %}Error 404{% endblock %}
+
+
+{% block navbar %}
+{% endblock %}
+
+ {% block content %}
+        
+         
+    			<center>
+      		<h2>Error 404</h2>
+         	<h3>This requested URL was not found on this server.</h3>
+         	  {%if current_user.role == 'admin' %}
+          	<h4><a href="{{url_for('dashboard')}}"><- Return To Dashboard</a></h4>
+          	{%else %}
+            <h4><a href="{{url_for('home')}}"><- Return To Dashboard</a></h4>
+            <p></p>
+          	{%endif %}
+          	
+          
+          </center>
+         
+{% endblock %}
+        

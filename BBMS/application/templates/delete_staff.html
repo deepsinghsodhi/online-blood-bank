@@ -1,0 +1,55 @@
+{% extends "staff_tab.html" %}
+
+{% block title %}Delete Staff{% endblock %}
+
+
+{% block navbar %}
+{% endblock %}
+
+
+{%block heading%}
+<h3 style="text-align:center;">Staff Management</h3>   
+{%endblock%}
+
+ {% block form %}
+        
+       {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            {% for category , message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    <p><center>{{ message }}</center></p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+            {% endfor %}
+        
+          {% endif %}
+        {% endwith %}
+        <div id="form-section">
+            <div id="form-field">
+
+                <p style="margin-top: 25px;">Delete Staff Member</p>
+               <form action="/delete_staff/" method="POST" >
+                    <table>
+                        
+                        <tr>
+                            <td id="label">Staff ID*</td>
+                            <td>
+                                <input type="text" name="s_id" class="form-control" id="s_id" placeholder="Enter Staff Id" required>
+                                
+                            </td> 
+                        </tr>
+                        
+                        <tr></tr>
+                        <tr>
+                          
+                            <td id="btn"><input type="submit" name="Sbtn"  value="Delete" id="btnsbmt" style="margin-left: 80%"></td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+        </div>
+{% endblock %}
+        

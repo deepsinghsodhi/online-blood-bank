@@ -1,0 +1,55 @@
+{% extends "donor_tab.html" %}
+
+{% block title %}Delete Donor{% endblock %}
+
+
+{% block navbar %}
+{% endblock %}
+
+
+{%block heading%}
+<h3 style="text-align:center;">Donor Management</h3>   
+{%endblock%}
+
+ {% block form %}
+        
+       {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            {% for category , message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    <p><center>{{ message }}</center></p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+            {% endfor %}
+        
+          {% endif %}
+        {% endwith %}
+        <div id="form-section">
+            <div id="form-field">
+
+                <p style="margin-top: 25px;">Delete Donor</p>
+               <form action="/delete_donor/" method="POST" >
+                    <table>
+                        
+                        <tr>
+                            <td id="label">Donor ID*</td>
+                            <td>
+                                <input type="text" name="d_id" class="form-control" id="d_id" placeholder="Enter Donor Id" required>
+                                
+                            </td> 
+                        </tr>
+                        
+                        <tr></tr>
+                        <tr>
+                          
+                            <td id="btn"><input type="submit" name="Sbtn"  value="Delete" id="btnsbmt" style="margin-left: 80%"></td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+        </div>
+{% endblock %}
+        

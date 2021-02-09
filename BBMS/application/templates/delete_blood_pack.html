@@ -1,0 +1,55 @@
+{% extends "stock_tab.html" %}
+
+{% block title %}Delete Pack{% endblock %}
+
+
+{% block navbar %}
+{% endblock %}
+
+
+{%block heading%}
+<h3 style="text-align:center;">Stock Management</h3>   
+{%endblock%}
+
+ {% block form %}
+        
+       {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            {% for category , message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    <p><center>{{ message }}</center></p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+            {% endfor %}
+        
+          {% endif %}
+        {% endwith %}
+        <div id="form-section">
+            <div id="form-field">
+
+                <p style="margin-top: 25px;">Delete Blood Pack</p>
+               <form action="/delete_blood_pack/" method="POST" >
+                    <table>
+                        
+                        <tr>
+                            <td id="label">Barcode No*</td>
+                            <td>
+                                <input type="text" name="barcode_no" class="form-control" id="barcode_no" placeholder="Enter Barcode No" required>
+                                
+                            </td> 
+                        </tr>
+                        
+                        <tr></tr>
+                        <tr>
+                          
+                            <td id="btn"><input type="submit" name="Sbtn"  value="Delete" id="btnsbmt" style="margin-left: 80%"></td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+        </div>
+{% endblock %}
+        

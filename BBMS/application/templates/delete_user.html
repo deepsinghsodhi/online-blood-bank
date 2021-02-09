@@ -1,0 +1,55 @@
+{% extends "user_tab.html" %}
+
+{% block title %}Delete User{% endblock %}
+
+
+{% block navbar %}
+{% endblock %}
+
+
+{%block heading%}
+<h3 style="text-align:center;">User Management</h3>   
+{%endblock%}
+
+ {% block form %}
+        
+       {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            {% for category , message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    <p><center>{{ message }}</center></p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+            {% endfor %}
+        
+          {% endif %}
+        {% endwith %}
+        <div id="form-section">
+            <div id="form-field">
+
+                <p style="margin-top: 25px;">Delete User</p>
+               <form action="/delete_user/" method="POST" >
+                    <table>
+                        
+                        <tr>
+                            <td id="label">Email</td>
+                            <td>
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter Registered Email" required>
+                                
+                            </td> 
+                        </tr>
+                        
+                        <tr></tr>
+                        <tr>
+                          
+                            <td id="btn"><input type="submit" name="Sbtn"  value="Delete" id="btnsbmt" style="margin-left: 80%"></td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+        </div>
+{% endblock %}
+        

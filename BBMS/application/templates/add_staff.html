@@ -1,0 +1,135 @@
+{% extends "staff_tab.html" %}
+
+{% block title %}Register Staff{% endblock %}
+
+
+{% block navbar %}
+{% endblock %}
+
+
+{%block heading%}
+<h3 style="text-align:center;">Staff Management</h3>       
+{%endblock%}
+
+ {% block form %}
+        
+         {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+              {% for category , message in messages %}
+                  <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                      <p><center>{{ message }}</center></p>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                  </div>
+              {% endfor %}
+          
+            {% endif %}
+          {% endwith %}
+          <!--<div id="form-section">-->
+              <div id="form-field">
+                <div style="display: flex;margin-top: 5%;">
+                  <p style="margin-left: 30%;">Add New Staff  </p>
+
+                </div>
+
+                  <form action="/add_staff/" method="POST" onSubmit = "return checkPassword(this)">
+                      <table >
+                          <tr>
+                              <td id="label"> Staff ID*</td>
+                              <td><input type="text" min="0" name="s_id" id="s_id" class="form-control" placeholder="Enter id to register" required></td>
+                              
+                          </tr>
+                          
+                          <tr>
+                              <td id="label"><p class="valid" id="chk1" style="display: none">*</p> Name*</td>
+                              <td><input type="text" name="name" id="P_nm"  class="form-control"onkeypress='return ((event.charCode>=65 && event.charCode<=90) || (event.charCode>=97 && event.charCode<=122 || event.charCode==32)) ' placeholder="UserName" required></td>
+                          </tr>
+                          <tr>
+                              <td id="label"> Email *</td>
+                              <td><input type="email" min="0" name="email" id="email" class="form-control"placeholder="Email" required></td>
+                          </tr>
+                          <tr>
+                              <td id="label"> Username *</td>
+                              <td><input type="text" min="0" name="username" id="username"  class="form-control"placeholder="Username" required></td>
+                          </tr>
+                          <tr>
+                              <td id="label">Gender</td>
+                              <td>
+                                  <select name="gender" class="form-control" required>
+                                      <option value="">Select</option>
+                                      <option value="Male">Male</option>
+                                      <option value="Female">Female</option>
+                                      <option value="Others">Others</option>
+                                  </select>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td id="label"> DOB*</td>
+                              <td><input type="date"  name="dob" id="dob"  class="form-control" required></td>
+                          </tr>
+                
+                          <tr>
+                              <td id="label">Contact No.*</td>
+                              <td><input type="text"   pattern="[1-9]{1}[0-9]{9}" title="Please Enter Exactly 10 digits" name="contact" id="contact" placeholder="Contact No." class="form-control" required></td>
+                          </tr>
+
+                          <tr>
+                              <td id="label">Address*</td>
+                              <td><textarea id="txtarea" name="address" class="form-control" required></textarea></td>
+                          </tr>
+                          
+
+                          <tr>
+                              <td id="label">City*</td>
+                              <td>
+                                  <select name="city" class="form-control" required>
+                                      <option value="">Select</option>
+                                      <option value="Indore">Indore</option>
+                                      <option value="Bhusawal">Bhusawal</option>
+                                      <option value="Dewas">Dewas</option>
+                                      <option value="Ujjain">Ujjain</option>
+                                      <option value="Bhopal">Bhopal</option>
+                                  </select>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td id="label">State*</td>
+                              <td>
+                                  <select name="state" class="form-control" required>
+                                      <option value="">Select</option>
+                                      <option value="Jammu Kashmir">Jammu Kashmir</option>
+                                      <option value="Delhi">Delhi</option>
+                                      <option value="Rajasthan">Rajasthan</option>
+                                      <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                      <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                  </select>
+                              </td>
+                          </tr>
+                           <!-- script to check both passwrd field same or not -->
+                    
+                          <tr>
+                              <td id="label"> Password*</td>
+                              <td><input type="password" class="form-control" min="0" name="password" id="password" placeholder="Password" style="border:1px solid #ced4da;color: black;" onkeyup='check();' required></td>
+                          </tr>
+                          <tr>
+                              <td id="label"> Confirm Password*</td>
+                              <td><input type="password" min="0" class="form-control" name="confirm_password" id="confirm_password" style="border:1px solid #ced4da;color: black;" onkeyup='check();' placeholder=" Confirm Password" required>
+                              <span id='message'></span>
+                              </td>
+                          </tr>
+
+                          
+                      </table>
+                      <br>
+                      <input type="submit" name="Sbtn"  value="Submit" id="btnsbmt"  >
+                      <input type="reset" name="Rbtn"  value="Reset" id="btnrst">
+                      <br>
+                      <br><br> 
+                  </form>                    
+              </div>
+}
+}
+        
+{% endblock %}
+        

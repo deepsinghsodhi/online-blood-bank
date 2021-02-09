@@ -1,0 +1,55 @@
+{% extends "admin_dash.html" %}
+
+{% block title %} User {% endblock %}
+
+{% block style %}
+<!-- Tabs -->
+        <style type="text/css">
+            /* Style tab links */
+            .tablink {
+              background-color: darksalmon;
+              color: white;
+              float: left;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              padding: 14px 16px;
+              font-size: 17px;
+              width: 25%;
+            }
+
+            .tablink:hover {
+              background-color: darkred;
+            }
+          </style>
+{% endblock %}
+
+ {% block content %}
+      {%block heading%}{%endblock%}
+        
+   <fieldset id="sub-header">
+                   
+          <button class="tablink"  onclick="window.location.href='{{ url_for('dashboard') }}';" > Dashboard </button>
+
+         
+          <button class="tablink" onclick="window.location.href='{{ url_for('view_all_user') }}';"> View All User  </button>
+
+          <button class="tablink" onclick="window.location.href='{{ url_for('update_user') }}';"> Update User </button>
+
+          <button class="tablink" onclick="window.location.href='{{ url_for('delete_user') }}';"> Delete User </button>
+
+    </fieldset>
+    <br>
+    {%block form %}
+    <fieldset style=" margin: 15%;padding: 60px;margin-top:-25px;"/>
+        <center>
+          <h2>Welcome To</h2>
+          <img src="{{url_for('static',filename='images/usermng.png')}}" ><h2>User Management Tab</h2>
+        
+          
+        </center>
+      </fieldset>
+      {%endblock%}
+          
+{% endblock %}
+        

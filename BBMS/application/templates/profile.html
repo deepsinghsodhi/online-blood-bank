@@ -1,0 +1,113 @@
+{% extends "settings.html" %}
+
+{% block title %}Profile{% endblock %}
+
+
+{% block navbar %}
+{% endblock %}
+
+
+
+ {% block form %}
+        
+       {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            {% for category , message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    <p><center>{{ message }}</center></p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+            {% endfor %}
+        
+          {% endif %}
+        {% endwith %}
+        <div id="form-section">
+            <div id="form-field">
+                    {%block heading%}
+                    <h3 style="text-align:center;">Your Profile</h3>   
+                    {%endblock%}
+               <form action="/profile/" method="POST" >
+                    <table>
+                        
+                        <tr>
+                            <td id="label"> Username</td>
+                            <td><input id="username" name="username" value="{{current_user.username}}" class="form-control here" required="required" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td id="label"> Email</td>
+                            <td><input type="email" name="email" class="form-control" value="{{current_user.email}}" id="email"   readonly></td>
+                        </tr>
+                        {%if data %}
+                        {% for d in data%}
+                        {%if u_id%}
+                        <tr>
+                            <td id="label"> Unique ID</td>
+                            <td><input type="text" name="u_id" class="form-control" value="{{u_id}}" id="u_id"   readonly></td>
+                        </tr>
+                        {%endif%}
+                        <tr>
+                            <td id="label"> Name</td>
+                            <td><input type="text" name="name" class="form-control" value="{{d.name}}" id="name"   required></td>
+                        </tr>
+                        
+                        <tr>
+                            <td id="label"> Gender</td>
+                            <td><input type="text" name="gender" class="form-control" value="{{d.gender}}" id="gender"   required></td>
+                        </tr>
+                        <tr>
+                            <td id="label"> DOB</td>
+                            <td><input type="text" name="dob" class="form-control" value="{{d.dob}}" id="dob"   required></td>
+                        </tr>
+                        <tr>
+                            <td id="label">Age</td>
+                            <td><input type="number" name="age" id="age" class="form-control" value="{{d.age}}"  readonly></td>
+                        </tr>
+                        <tr>
+                            <td id="label">Blood Group</td>
+                            <td><input type="text" name="bg" id="bg" class="form-control" value="{{d.blood_group}}"  readonly></td>
+                        </tr>
+                        <tr>
+                            <td id="label">Weight</td>
+                            <td><input type="number" name="weight" id="weight" class="form-control" value="{{d.weight}}"  readonly></td>
+                        </tr>
+                        <tr>
+                            <td id="label"> Contact</td>
+                            <td><input type="number" name="contact" class="form-control" value="{{d.contact}}" id="contact"   required></td>
+                        </tr>
+                        <tr>
+                            <td id="label">Address</td>
+                            <td><input type="text"  id="address" name="address" class="form-control" value="{{d.address}}" id="address" style="height: 50px;" required></td>
+                        </tr>
+                        <tr>
+                            <td id="label">City</td>
+                            <td><input type="text" name="city" class="form-control" value="{{d.city}}" id="city"   required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="label">State</td>
+                            <td><input type="text" name="state" class="form-control" value="{{d.state}}" id="state"   required>
+                            </td>
+                        </tr>
+                       <tr>
+                            <td id="label">Status</td>
+                            <td><input type="text" name="status" class="form-control" value="{{d.status}}" id="status"   required>
+                            </td>
+                        </tr>
+
+                        {% endfor%}
+
+                        {% endif %}
+                        <tr></tr>
+                        <tr>
+                          
+                            <td id="btn"><input type="submit" name="Sbtn"  class="form-control" value="Update" id="btnsbmt" style="margin-left: 80%"></td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+        </div>
+{% endblock %}
+        

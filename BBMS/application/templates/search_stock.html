@@ -1,0 +1,116 @@
+
+{% extends "donor_tab.html" %}
+
+{% block title %}Search Donor{% endblock %}
+
+
+{% block navbar %}
+{% endblock %}
+
+ {% block form %}
+        
+       {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            {% for category , message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    <p><center>{{message}}</center></p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+            {% endfor %}
+        
+          {% endif %}
+        {% endwith %}
+
+        <div id="form-section">
+            <div id="form-field">
+                
+                
+                <form action="/search_donor/" method="POST">
+                	
+                    {% if data %}
+                    {% for d in data%}
+                    <table>
+                        <tr>
+                            <td id="label">Donor's ID*</td>
+                            <div style="margin-top: 50px;"> 
+                                   <div style="display: inline-flex;">
+                                   	
+							          <div >
+							            <input id="search" type="text" class="form-control" value="{{d.d_id}}" />
+							          </div>
+							          <div >
+							            <input type="submit" name="Sbtn"  value="Search" id="btnsbmt"  >
+							          </div>
+							        </div> 
+                                </div>                       
+                        </tr>
+                        <tr>
+                            <td id="label">Name</td>
+                            <td>{{d.name}}</td>
+                        </tr>
+                        <tr>
+                            <td id="label">Email</td>
+                            <td>{{d.email}}</td>
+                        </tr>
+                        <tr>
+                            <td id="label">Gender</td>
+                            <td>{{d.gender}}</td>
+                        </tr>
+                        <tr>
+                            <td id="label">DOB</td>
+                            <td>{{d.dob}}</td>
+                        </tr>
+                        <tr>
+                            <td id="label"> Age</td>
+                             <td>{{d.age}}</td>
+                        </tr>
+                        <tr>
+                            <td id="label">Contact</td>
+                            <td>{{d.contact}}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td id="label">Address</td>
+                             <td>{{d.address}}</td>
+                        </tr>
+                        <tr>
+                            <td id="label">City</td>
+                            <td>{{d.city}}</td>
+                        </tr>
+                        <tr>
+                            <td id="label">State</td>
+                             <td>{{d.state}}</td>
+                        </tr>
+                        
+
+                        {% endfor%}
+                        {%else%}
+                        <table>
+                        <tr>
+                            <td> 
+                                <div style="margin-top: 50px;"> 
+                                   <div style="display: inline-flex;">
+                                   	
+							          <div >
+							            <input id="search" type="text" class="form-control" placeholder="Search Donor Id" />
+							          </div>
+							          <div >
+							            <input type="submit" name="Sbtn"  value="Search" id="btnsbmt"  >
+							          </div>
+							        </div> 
+                                </div>
+                            </td>                            
+                        </tr>
+                       
+                        
+                        {%endif%}
+                         
+                    </table>
+                </form>
+            </div>
+        </div>
+
+{% endblock %}
+        

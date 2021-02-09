@@ -1,0 +1,25 @@
+{% extends "error_tab.html" %}
+
+{% block title %}Error 401{% endblock %}
+
+
+{% block navbar %}
+{% endblock %}
+
+ {% block content %}
+        
+         <fieldset style="background: darkred;color: white; margin: 15%;padding: 60px;margin-top: 8%">
+    			<center>
+      		<h2>Error 500</h2>
+          <h3>Internal Server Error</h3>
+           {%if current_user.role == 'admin' %}
+            <h4><a href="{{url_for('dashboard')}}"><- Return To Dashboard</a></h4>
+            {%else %}
+            <h4><a href="{{url_for('home')}}"><- Return To Dashboard</a></h4>
+            <p></p>
+            {%endif %}
+            </center>
+  		</fieldset>
+          
+{% endblock %}
+        

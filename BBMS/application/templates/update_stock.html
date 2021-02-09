@@ -1,0 +1,81 @@
+{% extends "stock_tab.html" %}
+
+{% block title %}Update Stock{% endblock %}
+
+
+{% block navbar %}
+{% endblock %}
+
+
+{%block heading%}
+<h3 style="text-align:center;">Blood Bank Stock Management</h3>   
+{%endblock%}
+
+ {% block form %}
+        
+       {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            {% for category , message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    <p><center>{{ message }}</center></p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+            {% endfor %}
+        
+          {% endif %}
+        {% endwith %}
+        <div id="form-section">
+            <div id="form-field">
+                <p style="margin-top: 25px;">Update Stock</p>
+               <form action="/update_stock/" method="POST" >
+                    <table>
+                        
+                        <tr>
+                            <td id="label">Barcode No</td>
+                            <td>
+                                {% if data %}
+                                {%for d in data%}
+                                <input type="text" name="barcode" class="form-control" id="barcode" value="{{d.barcode_no}}" readonly>
+                                {% endfor %}
+                                {% else %}
+                                <input type="text" name="barcode" class="form-control" id="barcode" placeholder="Enter Barcode No" required>
+                                
+                            <td id="Getbtn"><input type="submit" name="Sbtn" onclick="enable(this)" value="Get" id="btnGet"></td>
+                                {% endif %}
+                            </td> 
+                        </tr>
+                        
+                        {% for d in data%}
+                        <tr>
+                            <td id="label"> Donor ID</td>
+                            <td><input type="text" name="d_id" class="form-control" value="{{d.d_id}}" id="d_id"   required></td>
+                        </tr>
+                        <tr>
+                            <td id="label"> Blood Group</td>
+                            <td><input type="text" name="bg" class="form-control" value="{{d.blood_group}}" id="bg"   required></td>
+                        </tr>
+                        <tr>
+                            <td id="label"> Quantity</td>
+                            <td><input type="number" name="qty" class="form-control" value="{{d.quantity}}" id="qty"   required></td>
+                        </tr>
+                        <tr>
+                            <td id="label"> Storage Location</td>
+                            <td><input type="text" name="storage" class="form-control" value="{{d.storage_location}}" id="storage"   required></td>
+                        </tr>
+                        
+                        
+                        <tr></tr>
+                        <tr>
+                          
+                            <td id="btn"><input type="submit" name="Sbtn"   value="Update" id="btnsbmt" style="margin-left: 80%"></td>
+                        </tr>
+                        {% endfor%}
+                    </table>
+
+                </form>
+            </div>
+        </div>
+{% endblock %}
+        

@@ -1,0 +1,75 @@
+{% extends "stock_tab.html" %}
+
+{% block title %}Stock Details{% endblock %}
+
+
+{% block navbar %}
+{% endblock %}
+
+{%block heading%}
+<h3 style="text-align: center;">Stock Management</h3>
+{%endblock%}
+ {% block form %}
+        
+         {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            {% for category , message in messages %}
+                <div class="alert alert-{{category}}">
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+        
+          {% endif %}
+        {% endwith %}
+            {%if details%}
+        
+        <!-- View Scrollable Table -->
+            <table id="dtVerticalScrollExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" style="text-align: center;margin-top: 60px;">
+          <thead style="color: white;background: grey;">
+            <tr>
+              
+              <th class="th-sm">Donor Id
+              </th>
+              <th class="th-sm">Barcode No
+              </th>
+              <th class="th-sm">Blood Group
+              </th>
+
+              <th class="th-sm">Quantity Available
+              </th>
+              <th class="th-sm">Storage
+              </th>
+              <th class="th-sm">Expiry date
+              </th>
+             
+              
+            </tr>
+           
+                          
+          </thead>
+          <tbody>
+            {% for d in details %}
+                    <tr>
+                      <td>{{d.d_id}}</td>
+                        <td>{{d.barcode_no}}</td>
+                        <td>{{d.blood_group}}</td>
+                        <td>{{d.quantity}}</td>
+                        <td>{{d.storage_location}}</td>
+                        <td>{{d.expiry_date}}</td>
+                      
+                    </tr>
+            {% endfor %}
+
+          </tbody>
+          <tfoot>
+           
+          </tfoot>
+        </table>
+        {%else%}
+        <h3 style="color: red;text-align: center;margin-top: 50px;">No Data Available</h3>
+        {%endif%}
+  </div>
+        
+        
+{% endblock %}
+        
